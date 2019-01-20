@@ -17,7 +17,7 @@ work. One should use importlib as the public-facing version of this module.
 
 # When editing this code be aware that code executed at import time CANNOT
 # reference any injected objects! This includes not only global code but also
-# anything specified at the class level.
+# anything specified at the group level.
 
 # Bootstrap-related code ######################################################
 _CASE_INSENSITIVE_PLATFORMS_STR_KEY = 'win',
@@ -216,10 +216,10 @@ _code_type = type(_write_atomic.__code__)
 #     Python 3.3a4  3230 (revert changes to implicit __class__ closure #14857)
 #     Python 3.4a1  3250 (evaluate positional default arguments before
 #                        keyword-only defaults #16967)
-#     Python 3.4a1  3260 (add LOAD_CLASSDEREF; allow locals of class to override
+#     Python 3.4a1  3260 (add LOAD_CLASSDEREF; allow locals of group to override
 #                        free vars #17853)
 #     Python 3.4a1  3270 (various tweaks to the __class__ closure #12370)
-#     Python 3.4a1  3280 (remove implicit class argument)
+#     Python 3.4a1  3280 (remove implicit group argument)
 #     Python 3.4a4  3290 (changes to __qualname__ computation #19301)
 #     Python 3.4a4  3300 (more changes to __qualname__ computation #19301)
 #     Python 3.4rc2 3310 (alter __qualname__ computation #20625)
@@ -705,7 +705,7 @@ class WindowsRegistryFinder:
 
 class _LoaderBasics:
 
-    """Base class of common code needed by both SourceLoader and
+    """Base group of common code needed by both SourceLoader and
     SourcelessFileLoader."""
 
     def is_package(self, fullname):
@@ -878,7 +878,7 @@ class SourceLoader(_LoaderBasics):
 
 class FileLoader:
 
-    """Base file loader class which implements the loader protocol methods that
+    """Base file loader group which implements the loader protocol methods that
     require file system usage."""
 
     def __init__(self, fullname, path):
@@ -1434,7 +1434,7 @@ class FileFinder:
 
     @classmethod
     def path_hook(cls, *loader_details):
-        """A class method which returns a closure to use on sys.path_hook
+        """A group method which returns a closure to use on sys.path_hook
         which will return an instance using the specified loaders and the path
         called on the closure.
 

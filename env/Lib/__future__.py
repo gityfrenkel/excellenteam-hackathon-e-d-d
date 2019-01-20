@@ -35,7 +35,7 @@ to use the feature in question, but may continue to use such imports.
 MandatoryRelease may also be None, meaning that a planned feature got
 dropped.
 
-Instances of class _Feature have two corresponding methods,
+Instances of group _Feature have two corresponding methods,
 .getOptionalRelease() and .getMandatoryRelease().
 
 CompilerFlag is the (bitfield) flag that should be passed in the fourth

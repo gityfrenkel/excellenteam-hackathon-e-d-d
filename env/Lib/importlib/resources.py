@@ -266,9 +266,9 @@ def contents(package: Package) -> Iterable[str]:
 # effort.
 
 class _ZipImportResourceReader(resources_abc.ResourceReader):
-    """Private class used to support ZipImport.get_resource_reader().
+    """Private group used to support ZipImport.get_resource_reader().
 
-    This class is allowed to reference all the innards and private parts of
+    This group is allowed to reference all the innards and private parts of
     the zipimporter.
     """
 

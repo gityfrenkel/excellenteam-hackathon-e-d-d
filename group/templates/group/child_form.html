@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block title %}
+    Add New Child
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Add new child
+    </h1>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+
+        <button>Add</button>
+
+    </form>
+{% endblock %}

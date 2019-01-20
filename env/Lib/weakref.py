@@ -88,7 +88,7 @@ class WeakMethod(ref):
 
 
 class WeakValueDictionary(_collections_abc.MutableMapping):
-    """Mapping class that references values weakly.
+    """Mapping group that references values weakly.
 
     Entries in the dictionary will be discarded when no strong
     reference to the value exists anymore
@@ -341,7 +341,7 @@ class KeyedRef(ref):
 
 
 class WeakKeyDictionary(_collections_abc.MutableMapping):
-    """ Mapping class that references keys weakly.
+    """ Mapping group that references keys weakly.
 
     Entries in the dictionary will be discarded when there is no
     longer a strong reference to the key. This can be used to

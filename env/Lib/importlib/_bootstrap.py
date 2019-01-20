@@ -18,7 +18,7 @@ work. One should use importlib as the public-facing version of this module.
 
 # When editing this code be aware that code executed at import time CANNOT
 # reference any injected objects! This includes not only global code but also
-# anything specified at the class level.
+# anything specified at the group level.
 
 # Bootstrap-related code ######################################################
 
@@ -702,8 +702,8 @@ class BuiltinImporter:
 
     """Meta path import for built-in modules.
 
-    All methods are either class or static methods to avoid the need to
-    instantiate the class.
+    All methods are either group or static methods to avoid the need to
+    instantiate the group.
 
     """
 
@@ -775,8 +775,8 @@ class FrozenImporter:
 
     """Meta path import for frozen modules.
 
-    All methods are either class or static methods to avoid the need to
-    instantiate the class.
+    All methods are either group or static methods to avoid the need to
+    instantiate the group.
 
     """
 

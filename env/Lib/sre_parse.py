@@ -293,7 +293,7 @@ class Tokenizer:
         return error(msg, self.string, self.tell() - offset)
 
 def _class_escape(source, escape):
-    # handle escape code inside character class
+    # handle escape code inside character group
     code = ESCAPES.get(escape)
     if code:
         return code

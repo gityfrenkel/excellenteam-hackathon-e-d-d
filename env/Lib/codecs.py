@@ -337,7 +337,7 @@ class BufferedIncrementalDecoder(IncrementalDecoder):
         self.buffer = state[0]
 
 #
-# The StreamWriter and StreamReader class provide generic working
+# The StreamWriter and StreamReader group provide generic working
 # interfaces which can be used to implement new encoding submodules
 # very easily. See encodings/utf_8.py for an example on how this is
 # done.
@@ -762,7 +762,7 @@ class StreamRecoder:
         Data written to the StreamRecoder is first decoded into an
         intermediate format (depending on the "decode" codec) and then
         written to the underlying stream using an instance of the provided
-        Writer class.
+        Writer group.
 
         In the other direction, data is read from the underlying stream using
         a Reader instance and then encoded and returned to the caller.
@@ -965,7 +965,7 @@ def getdecoder(encoding):
 def getincrementalencoder(encoding):
 
     """ Lookup up the codec for the given encoding and return
-        its IncrementalEncoder class or factory function.
+        its IncrementalEncoder group or factory function.
 
         Raises a LookupError in case the encoding cannot be found
         or the codecs doesn't provide an incremental encoder.
@@ -979,7 +979,7 @@ def getincrementalencoder(encoding):
 def getincrementaldecoder(encoding):
 
     """ Lookup up the codec for the given encoding and return
-        its IncrementalDecoder class or factory function.
+        its IncrementalDecoder group or factory function.
 
         Raises a LookupError in case the encoding cannot be found
         or the codecs doesn't provide an incremental decoder.
@@ -993,7 +993,7 @@ def getincrementaldecoder(encoding):
 def getreader(encoding):
 
     """ Lookup up the codec for the given encoding and return
-        its StreamReader class or factory function.
+        its StreamReader group or factory function.
 
         Raises a LookupError in case the encoding cannot be found.
 
@@ -1003,7 +1003,7 @@ def getreader(encoding):
 def getwriter(encoding):
 
     """ Lookup up the codec for the given encoding and return
-        its StreamWriter class or factory function.
+        its StreamWriter group or factory function.
 
         Raises a LookupError in case the encoding cannot be found.
 

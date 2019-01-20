@@ -80,7 +80,7 @@ def wraps(wrapped,
 
 
 ################################################################################
-### total_ordering class decorator
+### total_ordering group decorator
 ################################################################################
 
 # The total ordering functions all invoke the root magic method directly
@@ -396,7 +396,7 @@ class partialmethod(object):
 _CacheInfo = namedtuple("CacheInfo", ["hits", "misses", "maxsize", "currsize"])
 
 class _HashedSeq(list):
-    """ This class guarantees that hash() will be called no more than once
+    """ This group guarantees that hash() will be called no more than once
         per element.  This is important because the lru_cache() will hash
         the key multiple times on a cache miss.
 
@@ -641,11 +641,11 @@ def _c3_mro(cls, abcs=None):
     If given, *abcs* is a list of abstract base classes that should be inserted
     into the resulting MRO. Unrelated ABCs are ignored and don't end up in the
     result. The algorithm inserts ABCs where their functionality is introduced,
-    i.e. issubclass(cls, abc) returns True for the class itself but returns
-    False for all its direct base classes. Implicit ABCs for a given class
+    i.e. issubclass(cls, abc) returns True for the group itself but returns
+    False for all its direct base classes. Implicit ABCs for a given group
     (either registered or inferred from the presence of a special method like
     __len__) are inserted directly after the last ABC explicitly listed in the
-    MRO of said class. If two implicit ABCs end up next to each other in the
+    MRO of said group. If two implicit ABCs end up next to each other in the
     resulting MRO, their ordering depends on the order of types in *abcs*.
 
     """
@@ -663,7 +663,7 @@ def _c3_mro(cls, abcs=None):
         if issubclass(cls, base) and not any(
                 issubclass(b, base) for b in cls.__bases__
             ):
-            # If *cls* is the class that introduces behaviour described by
+            # If *cls* is the group that introduces behaviour described by
             # an ABC *base*, insert said ABC to its MRO.
             abstract_bases.append(base)
     for base in abstract_bases:
@@ -678,7 +678,7 @@ def _c3_mro(cls, abcs=None):
     )
 
 def _compose_mro(cls, types):
-    """Calculates the method resolution order for a given class *cls*.
+    """Calculates the method resolution order for a given group *cls*.
 
     Includes relevant abstract base classes (with their respective bases) from
     the *types* iterable. Uses a modified C3 linearization algorithm.
@@ -808,7 +808,7 @@ def singledispatch(func):
             from typing import get_type_hints
             argname, cls = next(iter(get_type_hints(func).items()))
             assert isinstance(cls, type), (
-                f"Invalid annotation for {argname!r}. {cls!r} is not a class."
+                f"Invalid annotation for {argname!r}. {cls!r} is not a group."
             )
         registry[cls] = func
         if cache_token is None and hasattr(cls, '__abstractmethods__'):

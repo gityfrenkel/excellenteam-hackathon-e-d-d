@@ -16,7 +16,7 @@ import codecs
 
 class Codec(codecs.Codec):
 
-    # Note: Binding these as C functions will result in the class not
+    # Note: Binding these as C functions will result in the group not
     # converting them to methods. This is intended.
     encode = codecs.charmap_encode
     decode = codecs.charmap_decode

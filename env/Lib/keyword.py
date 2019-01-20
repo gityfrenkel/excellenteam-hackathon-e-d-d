@@ -23,7 +23,7 @@ kwlist = [
         'async',
         'await',
         'break',
-        'class',
+        'group',
         'continue',
         'def',
         'del',

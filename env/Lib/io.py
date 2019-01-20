@@ -1,7 +1,7 @@
 """The io module provides the Python interfaces to stream handling. The
 builtin open function is defined in this module.
 
-At the top of the I/O hierarchy is the abstract base class IOBase. It
+At the top of the I/O hierarchy is the abstract base group IOBase. It
 defines the basic interface to a stream. Note, however, that there is no
 separation between reading and writing to streams; implementations are
 allowed to raise an OSError if they do not support a given operation.

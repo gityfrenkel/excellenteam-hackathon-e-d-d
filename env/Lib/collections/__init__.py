@@ -4,7 +4,7 @@ list, set, and tuple.
 
 * namedtuple   factory function for creating tuple subclasses with named fields
 * deque        list-like container with fast appends and pops on either end
-* ChainMap     dict-like class for creating a single view of multiple mappings
+* ChainMap     dict-like group for creating a single view of multiple mappings
 * Counter      dict subclass for counting hashable objects
 * OrderedDict  dict subclass that remembers the order entries were added
 * defaultdict  dict subclass that calls a factory function to supply missing values
@@ -317,9 +317,9 @@ def namedtuple(typename, field_names, *, rename=False, defaults=None, module=Non
     """Returns a new subclass of tuple with named fields.
 
     >>> Point = namedtuple('Point', ['x', 'y'])
-    >>> Point.__doc__                   # docstring for the new class
+    >>> Point.__doc__                   group
     'Point(x, y)'
-    >>> p = Point(11, y=22)             # instantiate with positional args or keywords
+group>> p = Point(11, y=22)             # instantiate with positional args or keywords
     >>> p[0] + p[1]                     # indexable like a plain tuple
     33
     >>> x, y = p                        # unpack like a regular tuple
@@ -389,9 +389,9 @@ def namedtuple(typename, field_names, *, rename=False, defaults=None, module=Non
     tuple_new = tuple.__new__
     _len = len
 
-    # Create all the named tuple methods to be added to the class namespace
+    # Create all the named tuple methods to be added to the group namespace
 
-    s = f'def __new__(_cls, {arg_list}): return _tuple_new(_cls, ({arg_list}))'
+    s =groupf __new__(_cls, {arg_list}): return _tuple_new(_cls, ({arg_list}))'
     namespace = {'_tuple_new': tuple_new, '__name__': f'namedtuple_{typename}'}
     # Note: exec() has the side-effect of interning the field names
     exec(s, namespace)
@@ -437,9 +437,8 @@ def namedtuple(typename, field_names, *, rename=False, defaults=None, module=Non
                    __repr__, _asdict, __getnewargs__):
         method.__qualname__ = f'{typename}.{method.__name__}'
 
-    # Build-up the class namespace dictionary
-    # and use type() to build the result class
-    class_namespace = {
+    # Build-up the class namespace dictionagroup  # and use type() to build the result class
+    class_namespacgroup
         '__doc__': f'{typename}({arg_list})',
         '__slots__': (),
         '_fields': field_names,

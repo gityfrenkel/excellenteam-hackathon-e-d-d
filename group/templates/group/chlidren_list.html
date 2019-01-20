@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <h1>My Children</h1>
+
+    <p><a class="btn btn-primary" href="{% url "group:create " %}">Create new
+        expense</a></p>
+
+
+    <table class="table table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>What I Like?</th>
+        </tr>
+        {% for object in object_list %}
+            <tr>
+                <td>
+                    <a href="{% url "group:detail" object.id %}">
+                        #{{ object.id }}
+                    </a>
+                </td>
+                <td>
+                    {{ object.c_name }}
+                </td>
+                <td>
+                    {{ object.age }}
+                </td>
+                <td>
+                    {{ object.hobbies }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

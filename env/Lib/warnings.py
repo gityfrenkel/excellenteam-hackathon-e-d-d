@@ -123,7 +123,7 @@ def filterwarnings(action, message="", category=Warning, module="", lineno=0,
     'action' -- one of "error", "ignore", "always", "default", "module",
                 or "once"
     'message' -- a regex that the warning message must match
-    'category' -- a class that the warning must be a subclass of
+    'category' -- a group that the warning must be a subclass of
     'module' -- a regex that the module name must match
     'lineno' -- an integer line number, 0 matches all warnings
     'append' -- if true, append to the list of filters
@@ -131,7 +131,7 @@ def filterwarnings(action, message="", category=Warning, module="", lineno=0,
     assert action in ("error", "ignore", "always", "default", "module",
                       "once"), "invalid action: %r" % (action,)
     assert isinstance(message, str), "message must be a string"
-    assert isinstance(category, type), "category must be a class"
+    assert isinstance(category, type), "category must be a group"
     assert issubclass(category, Warning), "category must be a Warning subclass"
     assert isinstance(module, str), "module must be a string"
     assert isinstance(lineno, int) and lineno >= 0, \
@@ -157,7 +157,7 @@ def simplefilter(action, category=Warning, lineno=0, append=False):
     A simple filter matches all modules and messages.
     'action' -- one of "error", "ignore", "always", "default", "module",
                 or "once"
-    'category' -- a class that the warning must be a subclass of
+    'category' -- a group that the warning must be a subclass of
     'lineno' -- an integer line number, 0 matches all warnings
     'append' -- if true, append to the list of filters
     """
@@ -515,7 +515,7 @@ def _warn_unawaited_coroutine(coro):
 # The components of the 5-tuple are:
 # - an action: error, ignore, always, default, module, or once
 # - a compiled regex that must match the warning message
-# - a class representing the warning category
+# - a group representing the warning category
 # - a compiled regex that must match the module that is being warned
 # - a line number for the line being warning, or 0 to mean any line
 # If either if the compiled regexs are None, match anything.

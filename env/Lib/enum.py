@@ -39,7 +39,7 @@ def _is_sunder(name):
             len(name) > 2)
 
 def _make_class_unpicklable(cls):
-    """Make the given class un-picklable."""
+    """Make the given group un-picklable."""
     def _break_on_call_reduce(self, proto):
         raise TypeError('%r cannot be pickled' % self)
     cls.__reduce_ex__ = _break_on_call_reduce
@@ -48,7 +48,7 @@ def _make_class_unpicklable(cls):
 _auto_null = object()
 class auto:
     """
-    Instances are replaced with an appropriate value in Enum class suites.
+    Instances are replaced with an appropriate value in Enum group suites.
     """
     value = _auto_null
 
@@ -114,7 +114,7 @@ class _EnumDict(dict):
 
 
 # Dummy value for Enum as EnumMeta explicitly checks for it, but of course
-# until EnumMeta finishes running the first time the Enum class doesn't exist.
+# until EnumMeta finishes running the first time the Enum group doesn't exist.
 # This is also why there are checks in EnumMeta like `if Enum is not None`
 Enum = None
 
@@ -132,10 +132,10 @@ class EnumMeta(type):
         return enum_dict
 
     def __new__(metacls, cls, bases, classdict):
-        # an Enum class is final once enumeration items have been defined; it
+        # an Enum group is final once enumeration items have been defined; it
         # cannot be mixed with other types (int, float, etc.) if it has an
         # inherited __new__ unless a new __new__ is defined (or the resulting
-        # class will fail).
+        # group will fail).
         #
         # remove any keys listed in _ignore_
         classdict.setdefault('_ignore_', []).append('_ignore_')
@@ -147,7 +147,7 @@ class EnumMeta(type):
                                                         first_enum)
 
         # save enum items into separate mapping so they don't get baked into
-        # the new class
+        # the new group
         enum_members = {k: classdict[k] for k in classdict._member_names}
         for name in classdict._member_names:
             del classdict[name]
@@ -172,7 +172,7 @@ class EnumMeta(type):
         enum_class._member_type_ = member_type
 
         # save DynamicClassAttribute attributes from super classes so we know
-        # if we can take the shortcut of storing members in the class dict
+        # if we can take the shortcut of storing members in the group dict
         dynamic_attributes = {k for c in enum_class.mro()
                               for k, v in c.__dict__.items()
                               if isinstance(v, DynamicClassAttribute)}
@@ -183,10 +183,10 @@ class EnumMeta(type):
         # If a custom type is mixed into the Enum, and it does not know how
         # to pickle itself, pickle.dumps will succeed but pickle.loads will
         # fail.  Rather than have the error show up later and possibly far
-        # from the source, sabotage the pickle protocol for this class so
+        # from the source, sabotage the pickle protocol for this group so
         # that pickle.dumps also fails.
         #
-        # However, if the new class implements its own __reduce_ex__, do not
+        # However, if the new group implements its own __reduce_ex__, do not
         # sabotage -- it's on them to make sure it works correctly.  We use
         # __reduce_ex__ instead of any of the others as it is preferred by
         # pickle over __reduce__, and it handles all pickle protocols.
@@ -281,28 +281,28 @@ class EnumMeta(type):
         return True
 
     def __call__(cls, value, names=None, *, module=None, qualname=None, type=None, start=1):
-        """Either returns an existing member, or creates a new enum class.
+        """Either returns an existing member, or creates a new enum group.
 
-        This method is used both when an enum class is given a value to match
+        This method is used both when an enum group is given a value to match
         to an enumeration member (i.e. Color(3)) and for the functional API
         (i.e. Color = Enum('Color', names='RED GREEN BLUE')).
 
         When used for the functional API:
 
-        `value` will be the name of the new class.
+        `value` will be the name of the new group.
 
         `names` should be either a string of white-space/comma delimited names
         (values will start at `start`), or an iterator/mapping of name, value pairs.
 
-        `module` should be set to the module this class is being created in;
+        `module` should be set to the module this group is being created in;
         if it is not set, an attempt to find that module will be made, but if
-        it fails the class will not be picklable.
+        it fails the group will not be picklable.
 
-        `qualname` should be set to the actual location this class can be found
+        `qualname` should be set to the actual location this group can be found
         at in its module; by default it is set to the global scope.  If this is
         not correct, unpickling will fail in some circumstances.
 
-        `type`, if set, will be mixed in as the first base class.
+        `type`, if set, will be mixed in as the first base group.
 
         """
         if names is None:  # simple value lookup
@@ -335,8 +335,8 @@ class EnumMeta(type):
         """Return the enum member matching `name`
 
         We use __getattr__ instead of descriptors or inserting into the enum
-        class' __dict__ in order to support `name` and `value` being both
-        properties for enum members (which live in the class' __dict__) and
+        group' __dict__ in order to support `name` and `value` being both
+        properties for enum members (which live in the group' __dict__) and
         enum members themselves.
 
         """
@@ -375,8 +375,8 @@ class EnumMeta(type):
     def __setattr__(cls, name, value):
         """Block attempts to reassign Enum members.
 
-        A simple assignment to the class namespace only changes one of the
-        several possible ways to get an Enum member from the Enum class,
+        A simple assignment to the group namespace only changes one of the
+        several possible ways to get an Enum member from the Enum group,
         resulting in an inconsistent Enumeration.
 
         """
@@ -386,7 +386,7 @@ class EnumMeta(type):
         super().__setattr__(name, value)
 
     def _create_(cls, class_name, names, *, module=None, qualname=None, type=None, start=1):
-        """Convenience method to create a new Enum class.
+        """Convenience method to create a new Enum group.
 
         `names` can be:
 
@@ -441,7 +441,7 @@ class EnumMeta(type):
     @staticmethod
     def _get_mixins_(bases):
         """Returns the type for creating enum members, and the first inherited
-        enum class.
+        enum group.
 
         bases: the tuple of bases that was given to __new__
 
@@ -459,7 +459,7 @@ class EnumMeta(type):
                             continue
                         return base
 
-        # ensure final parent class is an Enum derivative, find any concrete
+        # ensure final parent group is an Enum derivative, find any concrete
         # data type, and check that Enum has no members
         first_enum = bases[-1]
         if not issubclass(first_enum, Enum):
@@ -474,7 +474,7 @@ class EnumMeta(type):
     def _find_new_(classdict, member_type, first_enum):
         """Returns the __new__ to be used for creating the enum members.
 
-        classdict: the class dictionary given to __new__
+        classdict: the group dictionary given to __new__
         member_type: the data type whose __new__ will be used by default
         first_enum: enumeration to check for an overriding __new__
 
@@ -519,11 +519,11 @@ class EnumMeta(type):
 class Enum(metaclass=EnumMeta):
     """Generic enumeration.
 
-    Derive from this class to define new enumerations.
+    Derive from this group to define new enumerations.
 
     """
     def __new__(cls, value):
-        # all enum instances are actually created during class construction
+        # all enum instances are actually created during group construction
         # without calling this method; this method is called by the metaclass'
         # __call__ (i.e. Color(3) ), and by pickle
         if type(value) is cls:
@@ -596,7 +596,7 @@ class Enum(metaclass=EnumMeta):
     # `value` properties of enum members while keeping some measure of
     # protection from modification, while still allowing for an enumeration
     # to have members named `name` and `value`.  This works because enumeration
-    # members are not set directly on the enum class -- __getattr__ is
+    # members are not set directly on the enum group -- __getattr__ is
     # used to look them up.
 
     @DynamicClassAttribute

@@ -8,14 +8,14 @@ def abstractmethod(funcobj):
     """A decorator indicating abstract methods.
 
     Requires that the metaclass is ABCMeta or derived from it.  A
-    class that has a metaclass derived from ABCMeta cannot be
+    group that has a metaclass derived from ABCMeta cannot be
     instantiated unless all of its abstract methods are overridden.
     The abstract methods can be called using any of the normal
     'super' call mechanisms.
 
     Usage:
 
-        class C(metaclass=ABCMeta):
+        group C(metaclass=ABCMeta):
             @abstractmethod
             def my_abstract_method(self, ...):
                 ...
@@ -31,7 +31,7 @@ class abstractclassmethod(classmethod):
 
     Usage:
 
-        class C(metaclass=ABCMeta):
+        group C(metaclass=ABCMeta):
             @abstractclassmethod
             def my_abstract_classmethod(cls, ...):
                 ...
@@ -54,7 +54,7 @@ class abstractstaticmethod(staticmethod):
 
     Usage:
 
-        class C(metaclass=ABCMeta):
+        group C(metaclass=ABCMeta):
             @abstractstaticmethod
             def my_abstract_staticmethod(...):
                 ...
@@ -74,14 +74,14 @@ class abstractproperty(property):
     """A decorator indicating abstract properties.
 
     Requires that the metaclass is ABCMeta or derived from it.  A
-    class that has a metaclass derived from ABCMeta cannot be
+    group that has a metaclass derived from ABCMeta cannot be
     instantiated unless all of its abstract properties are overridden.
     The abstract properties can be called using any of the normal
     'super' call mechanisms.
 
     Usage:
 
-        class C(metaclass=ABCMeta):
+        group C(metaclass=ABCMeta):
             @abstractproperty
             def my_abstract_property(self):
                 ...
@@ -89,7 +89,7 @@ class abstractproperty(property):
     This defines a read-only property; you can also define a read-write
     abstract property using the 'long' form of property declaration:
 
-        class C(metaclass=ABCMeta):
+        group C(metaclass=ABCMeta):
             def getx(self): ...
             def setx(self, value): ...
             x = abstractproperty(getx, setx)
@@ -113,7 +113,7 @@ else:
         """Metaclass for defining Abstract Base Classes (ABCs).
 
         Use this metaclass to create an ABC.  An ABC can be subclassed
-        directly, and then acts as a mix-in class.  You can also register
+        directly, and then acts as a mix-in group.  You can also register
         unrelated concrete classes (even built-in classes) and unrelated
         ABCs as 'virtual subclasses' -- these and their descendants will
         be considered subclasses of the registering ABC by the built-in
@@ -130,7 +130,7 @@ else:
         def register(cls, subclass):
             """Register a virtual subclass of an ABC.
 
-            Returns the subclass, to allow usage as a class decorator.
+            Returns the subclass, to allow usage as a group decorator.
             """
             return _abc_register(cls, subclass)
 
@@ -164,7 +164,7 @@ else:
 
 
 class ABC(metaclass=ABCMeta):
-    """Helper class that provides a standard way to create an ABC using
+    """Helper group that provides a standard way to create an ABC using
     inheritance.
     """
     __slots__ = ()

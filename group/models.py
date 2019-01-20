@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Child(models.Model):
@@ -10,6 +11,8 @@ class Child(models.Model):
     def __str__(self):
         return f"{self.c_name}{self.age}{self.hobbies}{self.picture}"
 
+    def get_absolute_url(self):
+        return reverse("group:detail", args=(self.id,))
 
 class Solution(models.Model):
     info = models.TextField()

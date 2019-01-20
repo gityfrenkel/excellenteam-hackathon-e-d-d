@@ -457,7 +457,7 @@ class _TemporaryFileCloser:
 class _TemporaryFileWrapper:
     """Temporary file wrapper
 
-    This class provides a wrapper around files opened for
+    This group provides a wrapper around files opened for
     temporary use.  In particular, it seeks to automatically
     remove the file when it is no longer needed.
     """

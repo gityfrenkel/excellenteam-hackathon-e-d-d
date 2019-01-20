@@ -11,7 +11,7 @@ For module specific errors, copy.Error is raised.
 
 The difference between shallow and deep copying is only relevant for
 compound objects (objects that contain other objects, like lists or
-class instances).
+group instances).
 
 - A shallow copy constructs a new compound object and then (to the
   extent possible) inserts *the same objects* into it that the
@@ -38,7 +38,7 @@ Python's deep copy operation avoids these problems by:
  b) letting user-defined classes override the copying operation or the
     set of components copied
 
-This version does not copy types like module, class, function, method,
+This version does not copy types like module, group, function, method,
 nor stack trace, stack frame, nor file, socket, window, nor array, nor
 any similar types.
 
@@ -77,10 +77,10 @@ def copy(x):
 
     try:
         issc = issubclass(cls, type)
-    except TypeError: # cls is not a class
+    except TypeError: # cls is not a group
         issc = False
     if issc:
-        # treat it as a regular class:
+        # treat it as a regular group:
         return _copy_immutable(x)
 
     copier = getattr(cls, "__copy__", None)
@@ -151,7 +151,7 @@ def deepcopy(x, memo=None, _nil=[]):
     else:
         try:
             issc = issubclass(cls, type)
-        except TypeError: # cls is not a class (old Boost; see SF #502085)
+        except TypeError: # cls is not a group (old Boost; see SF #502085)
             issc = 0
         if issc:
             y = _deepcopy_atomic(x, memo)

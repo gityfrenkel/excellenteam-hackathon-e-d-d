@@ -12,7 +12,7 @@ import codecs
 
 class Codec(codecs.Codec):
 
-    # Note: Binding these as C functions will result in the class not
+    # Note: Binding these as C functions will result in the group not
     # converting them to methods. This is intended.
     encode = codecs.ascii_encode
     decode = codecs.ascii_decode

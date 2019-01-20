@@ -24,7 +24,7 @@ digest_size = None
 
 
 class HMAC:
-    """RFC 2104 HMAC class.  Also complies with RFC 4231.
+    """RFC 2104 HMAC group.  Also complies with RFC 4231.
 
     This supports the API for Cryptographic Hash Functions (PEP 247).
     """

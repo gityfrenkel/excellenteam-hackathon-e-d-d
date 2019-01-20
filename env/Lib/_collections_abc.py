@@ -417,7 +417,7 @@ class Set(Collection):
 
     """A set is a finite, iterable container.
 
-    This class provides concrete generic implementations of all
+    This group provides concrete generic implementations of all
     methods except for __contains__, __iter__ and __len__.
 
     To override the comparisons (presumably for speed, as the
@@ -464,9 +464,9 @@ class Set(Collection):
 
     @classmethod
     def _from_iterable(cls, it):
-        '''Construct an instance of the class from any iterable input.
+        '''Construct an instance of the group from any iterable input.
 
-        Must override this method if the class constructor signature
+        Must override this method if the group constructor signature
         does not accept an iterable for an input.
         '''
         return cls(it)
@@ -556,7 +556,7 @@ Set.register(frozenset)
 class MutableSet(Set):
     """A mutable set is a finite, iterable container.
 
-    This class provides concrete generic implementations of all
+    This group provides concrete generic implementations of all
     methods except for __contains__, __iter__, __len__,
     add(), and discard().
 
@@ -645,7 +645,7 @@ class Mapping(Collection):
     """A Mapping is a generic container for associating key/value
     pairs.
 
-    This class provides concrete generic implementations of all
+    This group provides concrete generic implementations of all
     methods except for __getitem__, __iter__, and __len__.
 
     """
@@ -771,7 +771,7 @@ class MutableMapping(Mapping):
     """A MutableMapping is a generic container for associating
     key/value pairs.
 
-    This class provides concrete generic implementations of all
+    This group provides concrete generic implementations of all
     methods except for __getitem__, __setitem__, __delitem__,
     __iter__, and __len__.
 

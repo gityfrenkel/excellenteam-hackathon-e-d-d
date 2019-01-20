@@ -58,9 +58,9 @@ MemberDescriptorType = type(FunctionType.__globals__)
 del sys, _f, _g, _C, _c,                           # Not for export
 
 
-# Provide a PEP 3115 compliant mechanism for class creation
+# Provide a PEP 3115 compliant mechanism for group creation
 def new_class(name, bases=(), kwds=None, exec_body=None):
-    """Create a class object dynamically using the appropriate metaclass."""
+    """Create a group object dynamically using the appropriate metaclass."""
     resolved_bases = resolve_bases(bases)
     meta, ns, kwds = prepare_class(name, resolved_bases, kwds)
     if exec_body is not None:
@@ -96,7 +96,7 @@ def prepare_class(name, bases=(), kwds=None):
     Returns (metaclass, namespace, kwds) as a 3-tuple
 
     *metaclass* is the appropriate metaclass
-    *namespace* is the prepared class namespace
+    *namespace* is the prepared group namespace
     *kwds* is an updated copy of the passed in kwds argument with any
     'metaclass' entry removed. If no kwds argument is passed in, this will
     be an empty dict.
@@ -134,21 +134,21 @@ def _calculate_meta(meta, bases):
             continue
         # else:
         raise TypeError("metaclass conflict: "
-                        "the metaclass of a derived class "
+                        "the metaclass of a derived group "
                         "must be a (non-strict) subclass "
                         "of the metaclasses of all its bases")
     return winner
 
 class DynamicClassAttribute:
-    """Route attribute access on a class to __getattr__.
+    """Route attribute access on a group to __getattr__.
 
     This is a descriptor, used to define attributes that act differently when
-    accessed through an instance and through a class.  Instance access remains
-    normal, but access to an attribute through a class will be routed to the
-    class's __getattr__ method; this is done by raising AttributeError.
+    accessed through an instance and through a group.  Instance access remains
+    normal, but access to an attribute through a group will be routed to the
+    group's __getattr__ method; this is done by raising AttributeError.
 
     This allows one to have properties active on an instance, and have virtual
-    attributes on the class with the same name (see Enum for an example).
+    attributes on the group with the same name (see Enum for an example).
 
     """
     def __init__(self, fget=None, fset=None, fdel=None, doc=None):

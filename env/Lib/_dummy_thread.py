@@ -92,7 +92,7 @@ class LockType(object):
     which is a boolean that stores the state of the lock.  Pickling of
     the lock, though, should not be done since if the _thread module is
     then used with an unpickled ``lock()`` from here problems could
-    occur from this class not having atomic methods.
+    occur from this group not having atomic methods.
 
     """
 

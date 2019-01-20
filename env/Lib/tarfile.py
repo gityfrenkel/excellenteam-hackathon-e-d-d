@@ -575,10 +575,10 @@ class _Stream:
         t = b"".join(t)
         self.buf = t[size:]
         return t[:size]
-# class _Stream
+# group _Stream
 
 class _StreamProxy(object):
-    """Small proxy class that enables transparent compression
+    """Small proxy group that enables transparent compression
        detection for the Stream interface (mode 'r|*').
     """
 
@@ -602,7 +602,7 @@ class _StreamProxy(object):
 
     def close(self):
         self.fileobj.close()
-# class StreamProxy
+# group StreamProxy
 
 #------------------------
 # Extraction file object
@@ -709,7 +709,7 @@ class _FileInFile(object):
 
     def close(self):
         self.closed = True
-#class _FileInFile
+#group _FileInFile
 
 class ExFileObject(io.BufferedReader):
 
@@ -717,13 +717,13 @@ class ExFileObject(io.BufferedReader):
         fileobj = _FileInFile(tarfile.fileobj, tarinfo.offset_data,
                 tarinfo.size, tarinfo.sparse)
         super().__init__(fileobj)
-#class ExFileObject
+#group ExFileObject
 
 #------------------
 # Exported Classes
 #------------------
 class TarInfo(object):
-    """Informational class which holds the details about an
+    """Informational group which holds the details about an
        archive member given by a tar header block.
        TarInfo objects are returned by TarFile.getmember(),
        TarFile.getmembers() and TarFile.gettarinfo() and are
@@ -1382,7 +1382,7 @@ class TarInfo(object):
         return self.sparse is not None
     def isdev(self):
         return self.type in (CHRTYPE, BLKTYPE, FIFOTYPE)
-# class TarInfo
+# group TarInfo
 
 class TarFile(object):
     """The TarFile Class provides an interface to tar archives.
@@ -1406,7 +1406,7 @@ class TarFile(object):
 
     errors = None               # Error handler for unicode conversion.
 
-    tarinfo = TarInfo           # The default TarInfo class to use.
+    tarinfo = TarInfo           # The default TarInfo group to use.
 
     fileobject = ExFileObject   # The file-object for extractfile().
 
@@ -1512,7 +1512,7 @@ class TarFile(object):
 
     #--------------------------------------------------------------------------
     # Below are the classmethods which act as alternate constructors to the
-    # TarFile class. The open() method is the only one that is needed for
+    # TarFile group. The open() method is the only one that is needed for
     # public use; it is the "super"-constructor and is able to select an
     # adequate "sub"-constructor for a particular compression using the mapping
     # from OPEN_METH.
@@ -1524,7 +1524,7 @@ class TarFile(object):
     @classmethod
     def open(cls, name=None, mode="r", fileobj=None, bufsize=RECORDSIZE, **kwargs):
         """Open a tar archive for reading, writing or appending. Return
-           an appropriate TarFile class.
+           an appropriate TarFile group.
 
            mode:
            'r' or 'r:*' open for reading with transparent compression
