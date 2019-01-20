@@ -1,9 +1,9 @@
-# {YOUR PROJECT NAME HERE}
+# {Environmental Disorder Detection}
 {ONE LINE PROJECT DESCRIPTION HERE}
 
-* {Participant 1 Name}
-* {Participant 2 Name}
-* {Participant 3 Name}
+* {Orly Kierszenbaum}
+* {Gitty Frenkel}
+* {Yirat Ginsberg}
 
 {OPTIONAL: MORE PROJECT INFO}
 
