@@ -2,7 +2,14 @@ from django import forms
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, FormView, ListView
 
-from group.models import Child, Disorder, Solution, ChildDisorder
+from group.models import Child, Disorder, ChildDisorder
+
+#
+# def some_name(request):
+#     foo_instance = Child.objects.create(c_name =age = models.IntegerField()
+#     hobbies = models.TextField()
+#     picture)
+#     return render(request, 'some_name.html.html')
 
 
 class ChildrenListView(ListView):
