@@ -4,7 +4,7 @@ from django.urls import reverse
 
 class Child(models.Model):
     c_name = models.CharField(max_length=200)
-    age = models.IntegerField(0, 120)
+    age = models.IntegerField()
     hobbies = models.TextField()
     picture = models.TextField()
 
@@ -33,7 +33,7 @@ class Disorder(models.Model):
 class ChildDisorder(models.Model):
     d_id = models.ForeignKey(Disorder, on_delete=models.CASCADE,primary_key=True)
     c_id = models.ForeignKey(Child, on_delete=models.CASCADE,primary_key=True)
-    risk_level = models.IntegerField(1, 3)
+    risk_level = models.IntegerField()
 
     def __str__(self):
         return f"{self.risk_level}"
