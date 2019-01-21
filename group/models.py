@@ -14,6 +14,7 @@ class Child(models.Model):
     def get_absolute_url(self):
         return reverse("group:detail", args=(self.id,))
 
+
 class Solution(models.Model):
     info = models.TextField()
 
@@ -31,8 +32,8 @@ class Disorder(models.Model):
 
 
 class ChildDisorder(models.Model):
-    d_id = models.ForeignKey(Disorder, on_delete=models.CASCADE,primary_key=True)
-    c_id = models.ForeignKey(Child, on_delete=models.CASCADE,primary_key=True)
+    d_id = models.ForeignKey(Disorder, on_delete=models.CASCADE)
+    c_id = models.ForeignKey(Child, on_delete=models.CASCADE)
     risk_level = models.IntegerField()
 
     def __str__(self):
