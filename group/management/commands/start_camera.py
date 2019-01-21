@@ -1,8 +1,8 @@
 import time
+import cv2
 
 from django.core.management.base import BaseCommand
 import requests
-from group.models import Child
 import random
 
 
@@ -18,18 +18,53 @@ class Command(BaseCommand):
     help = "start camera"
 
     def handle(self, *args, **options):
+        cap = cv2.VideoCapture(0)
+        face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
         while True:
-            lucky = random.randint(1, 100)
-            s = f"Your lucky number is {lucky}!"
-            print(s)
+            ret, frame = cap.read()
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            faces = face_cascade.detectMultiScale(
+                gray,
+                scaleFactor=1.1,
+                minNeighbors=5,
+                minSize=(30, 30)
+            )
+
+            # print(f"Found {len(faces)} faces!")
             try:
-                code = publish(s)
-                print(">", code)
+                if len(faces) > 1:
+                    code = publish(len(faces))
+                    print(">", code)
             except ConnectionError as e:
                 print("!", e)
 
-            time.sleep(random.uniform(1, 4))
+            # time.sleep(random.uniform(1, 4))
+
+            for (x, y, w, h) in faces:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+            cv2.imshow('frame', frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
+        cap.release()
+        cv2.destroyAllWindows()
+
+        # while True:
+        #     lucky = random.randint(1, 100)
+        #     s = f"Your lucky number is {lucky}!"
+        #     print(s)
+        #     try:
+        #         code = publish(s)
+        #         print(">", code)
+        #     except ConnectionError as e:
+        #         print("!", e)
+        #
+        #     time.sleep(random.uniform(1, 4))
+
+
+
 
 
 

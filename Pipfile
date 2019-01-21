@@ -12,6 +12,7 @@ django-extensions = "*"
 django-bootstrap4 = "*"
 requests = "*"
 aiohttp = "*"
+opencv-python = "==3.4.3.18"
 
 [requires]
 python_version = "3.7"
