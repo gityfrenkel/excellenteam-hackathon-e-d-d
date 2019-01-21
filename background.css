@@ -1,0 +1,79 @@
+html{
+	width:100%;
+	height:100%;
+}
+
+body{
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+}
+
+.row{
+	position:relative;
+	width:100%;
+	height:50%;
+}
+
+.child{
+	position:relative;
+	float:right;
+	height:100%;
+	width:33.333%;
+	background-color:white;
+	box-shadow: inset 2px 2px 2px 2px #eeeeee;
+}
+
+.row_l2_1{
+	position:relative;
+	float:right;
+	height:70%;
+	width:100%;
+}
+
+.row_l2_2{
+	position:relative;
+	height:30%;
+	width:100%;
+}
+
+.pic{
+	position:relative;
+	float:right;
+	height:100%;
+	width:30%;
+}
+
+.details{
+	position:relative;
+	float:right;
+	height:100%;
+	width:70%;
+}
+
+.icon{
+	float:right;
+	position:relative;
+	width:25%;
+	background-color: red;
+}
+
+.icon img{
+	width:80%;
+	float:left;
+}
+
+.value{
+	position:relative;
+	width:100%;
+	height:20%;
+}
+
+.details text{
+	font-size:200%;
+	direction:rtl;
+	padding:7px;
+	/*float:right;*/
+}
+
