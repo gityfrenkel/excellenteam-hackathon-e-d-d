@@ -14,6 +14,9 @@ requests = "*"
 aiohttp = "*"
 opencv-python = "==3.4.3.18"
 imutils = "*"
+scikit-image = "*"
+scipy = "*"
+sounddevice = "*"
 
 [requires]
 python_version = "3.7"
