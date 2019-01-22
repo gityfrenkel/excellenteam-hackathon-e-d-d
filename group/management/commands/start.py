@@ -89,21 +89,21 @@ class Command(BaseCommand):
             num_before = num_after
             num_after = lightDetection(frame)
             count += 1
-            v.append(a())
+            # v.append(a())
 
 
             try:
-                if len(faces) > 2:
+                if len(faces) > 1:
                     qs = children_by_crowed()
                     html = html_all_children(qs)
                     code = publish(html)
                     print(">", code)
-                    # sleep(60)
+                    sleep(60)
                     qss = all_children()
                     htmlmain = html_main(qss)
                     publish(htmlmain)
 
-                if num_after > num_before and count > 5:
+                if num_after>num_before and count > 5:
                     qs = children_by_light()
                     html = html_all_children(qs)
                     code = publish(html)
@@ -114,20 +114,20 @@ class Command(BaseCommand):
                     publish(htmlmain)
 
                 b = 0
-                if count>50:
-                    for i in range(count - 50, count):
-
-                        if v[i] < 100:
-                            b += 1
-                    if b > 30:
-                        qs = children_by_noise()
-                        html = html_all_children(qs)
-                        code = publish(html)
-                        print("loud sound detected", code)
-                        # sleep(60)
-                        qss = all_children()
-                        htmlmain = html_main(qss)
-                        publish(htmlmain)
+                # if count>50:
+                #     for i in range(count - 50, count):
+                #
+                #         if v[i] < 30:
+                #             b += 1
+                #     if b > 30:
+                #         qs = children_by_noise()
+                #         html = html_all_children(qs)
+                #         code = publish(html)
+                #         print("loud sound detected", code)
+                #         # sleep(60)
+                #         qss = all_children()
+                #         htmlmain = html_main(qss)
+                #         publish(htmlmain)
 
 
             except ConnectionError as e:

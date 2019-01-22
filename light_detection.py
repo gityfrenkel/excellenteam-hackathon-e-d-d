@@ -7,8 +7,8 @@ import cv2
 
 num_of_spots = 0
 def lightDetection(frame):
-    image = frame
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # image = frame
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     blurred = cv2.GaussianBlur(gray, (11, 11), 0)
     thresh = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)[1]
     thresh = cv2.erode(thresh, None, iterations=2)
@@ -33,12 +33,12 @@ def lightDetection(frame):
     for (i, c) in enumerate(cnts):
         (x, y, w, h) = cv2.boundingRect(c)
         ((cX, cY), radius) = cv2.minEnclosingCircle(c)
-        cv2.circle(image, (int(cX), int(cY)), int(radius),
+        cv2.circle(frame, (int(cX), int(cY)), int(radius),
                    (0, 0, 255), 3)
-        cv2.putText(image, "#{}".format(i + 1), (x, y - 15),
+        cv2.putText(frame, "#{}".format(i + 1), (x, y - 15),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
 
-    cv2.imshow("Image", image)
+    # cv2.imshow("Image", frame)
     # cv2.waitKey(0)
 
     return num_of_spots

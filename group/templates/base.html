@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="result.css"/>
+    <link rel="stylesheet" type="text/css" href="background.css"/>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"></a>
+        </nav>
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
