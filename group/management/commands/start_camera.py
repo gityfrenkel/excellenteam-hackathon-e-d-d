@@ -2,8 +2,25 @@ import time
 import cv2
 
 from django.core.management.base import BaseCommand
+from django.template.loader import render_to_string
+
+from group.models import Child, Disorder, ChildDisorder
+
+from django.core.management.base import BaseCommand
 import requests
 import random
+
+from group.management import commands
+
+
+def all_children():
+    qs = ChildDisorder.objects.select_related()
+    print(qs)
+    return qs
+
+def html_all_children(qs):
+    html = render_to_string("background.html",{"object":qs})
+    return html
 
 
 def publish(content):
@@ -34,7 +51,9 @@ class Command(BaseCommand):
             # print(f"Found {len(faces)} faces!")
             try:
                 if len(faces) > 1:
-                    code = publish(len(faces))
+                    qs = all_children()
+                    html = html_all_children(qs)
+                    code = publish(html)
                     print(">", code)
             except ConnectionError as e:
                 print("!", e)
@@ -62,7 +81,6 @@ class Command(BaseCommand):
         #         print("!", e)
         #
         #     time.sleep(random.uniform(1, 4))
-
 
 
 

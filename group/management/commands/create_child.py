@@ -1,6 +1,5 @@
 import names
 from django.core.management.base import BaseCommand
-
 from group.models import Child, Disorder, ChildDisorder
 import random
 
