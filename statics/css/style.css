@@ -1,25 +1,53 @@
-.info {
-    font-size: 3rem;
-    border: 2px solid black;
-    margin: 10px 0;
-    padding:10px;
-    text-align: center;
-}
+/*.info {*/
+    /*font-size: 3rem;*/
+    /*border: 2px solid black;*/
+    /*margin: 10px 0;*/
+    /*padding:10px;*/
+    /*text-align: center;*/
+/*}*/
 
-.info.flash {
-    animation: yellow-fade 0.5s;
-}
+/*.info.flash {*/
+    /*animation: yellow-fade 0.5s;*/
+/*}*/
 
-.info.error {
-    background: orange;
-}
+/*.info.error {*/
+    /*background: orange;*/
+/*}*/
 
 
-@keyframes yellow-fade {
-    from {
-        background: #efff00;
-    }
-    to {
-        background: #fff;
-    }
-}
+/*@keyframes yellow-fade {*/
+    /*from {*/
+        /*background: #efff00;*/
+    /*}*/
+    /*to {*/
+        /*background: #fff;*/
+    /*}*/
+/*}*/
+
+
+
+/*html{*/
+	/*width:100%;*/
+	/*height:100%;*/
+/*}*/
+
+/*body{*/
+	/*margin:0;*/
+	/*padding:0;*/
+	/*width:100%;*/
+	/*height:100%;*/
+/*}*/
+
+/*body, html {*/
+  /*height: 100%;*/
+/*}*/
+
+/*.pic{*/
+    /*background-image: url("../../statics/img/attention.png");*/
+    /*!*filter: blur(5px);*!*/
+    /*!*-webkit-filter: blur(5px);*!*/
+    /*height: 100%;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+/*}*/

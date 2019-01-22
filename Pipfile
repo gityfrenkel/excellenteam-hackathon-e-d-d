@@ -13,6 +13,7 @@ django-bootstrap4 = "*"
 requests = "*"
 aiohttp = "*"
 opencv-python = "==3.4.3.18"
+imutils = "*"
 
 [requires]
 python_version = "3.7"

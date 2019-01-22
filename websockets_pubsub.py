@@ -84,5 +84,5 @@ if __name__ == "__main__":
         format='%(asctime)s %(levelname)s %(message)s',
     )
 
-    web.run_app(init(), port=8976)
+    web.run_app(init(), port=8888)
 

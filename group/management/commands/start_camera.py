@@ -4,7 +4,7 @@ import cv2
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 
-from group.models import Child, Disorder, ChildDisorder
+from group.models import Child
 
 from django.core.management.base import BaseCommand
 import requests
@@ -12,19 +12,42 @@ import random
 
 from group.management import commands
 
-
 def all_children():
-    qs = ChildDisorder.objects.select_related()
+    qs = Child.objects.all()
+    return qs
+
+
+def children_by_light():
+    qs = Child.objects.filter(disorder='light')
+    return qs
+
+
+def children_by_crowed():
+    qs = Child.objects.filter(disorder='crowed')
+    print(qs)
+
+    return qs
+
+
+def children_by_noise():
+    qs = Child.objects.filter(disorder='noise')
     print(qs)
     return qs
 
+
+def children_by_unknown():
+    qs = Child.objects.filter(disorder='unknown')
+    return qs
+
+
 def html_all_children(qs):
-    html = render_to_string("background.html",{"object":qs})
+    html = render_to_string('background.html', {'object': qs})
+    print(html)
     return html
 
 
 def publish(content):
-    r = requests.post('http://localhost:8976/publish/', {
+    r = requests.post('http://localhost:8888/publish/', {
         'content': content,
     })
     r.raise_for_status()
@@ -39,6 +62,7 @@ class Command(BaseCommand):
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
         while True:
+
             ret, frame = cap.read()
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(
@@ -48,15 +72,15 @@ class Command(BaseCommand):
                 minSize=(30, 30)
             )
 
-            # print(f"Found {len(faces)} faces!")
             try:
-                if len(faces) > 1:
+                if len(faces) > 0:
                     qs = all_children()
                     html = html_all_children(qs)
                     code = publish(html)
                     print(">", code)
             except ConnectionError as e:
                 print("!", e)
+
 
             # time.sleep(random.uniform(1, 4))
 
@@ -69,18 +93,6 @@ class Command(BaseCommand):
 
         cap.release()
         cv2.destroyAllWindows()
-
-        # while True:
-        #     lucky = random.randint(1, 100)
-        #     s = f"Your lucky number is {lucky}!"
-        #     print(s)
-        #     try:
-        #         code = publish(s)
-        #         print(">", code)
-        #     except ConnectionError as e:
-        #         print("!", e)
-        #
-        #     time.sleep(random.uniform(1, 4))
 
 
 

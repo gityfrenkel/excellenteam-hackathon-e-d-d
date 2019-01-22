@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for o in object %}
+        <div class="background">
+            <div class="wrapper">
+                <img class="pic" src='statics/img/{{o.picture}}'/>
+                <p>{{o.name}} doesn't like {{o.disorder}} {{o.solution}} can calm them down.</p>
+                <img class="icon" src='statics/img/{{o.icon}}'/>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -2,7 +2,7 @@ from django import forms
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, FormView, ListView
 
-from group.models import Child, Disorder, ChildDisorder
+from group.models import Child
 
 #
 # def some_name(request):
