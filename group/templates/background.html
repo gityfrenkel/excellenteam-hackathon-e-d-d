@@ -1,137 +1,137 @@
 {% extends "base.html" %}
 {% block content %}
 	<div class="row" id="row1">
-		<div class="child" id="child1">
-			<div class="row_l2_1">
-				<div class="pic">
-					<img id="pic1" src=statics/img/{{object.0.picture}}/>
+		<div class="col-sm" id="col-sm1">
+			<div class="row">
+				<div class="pic col-sm">
+					<img id="pic1" src=/statics/img/{{object.0.picture}}>
 				</div>
-				<div class="details">
-					<div class="value"><p> name: {{object.0.name}}</p></div>
-		 			<div class="value"><p> age:p {{object.0.age}}</p></div>
-					<div class="value"><p> hobbies:p{{object.0.hobbies}}</p></div>
-					<div class="value"><p> solution: {{object.0.solution}}</p></div>
-					<div class="value"><p> risk_level: {{object.0.risk_level}}</p></div>
-
+				<div class="details col-sm">
+					<div class="value">  name: {{object.0.full_name}}</div>
+		 			<div class="value">  age: {{object.0.age}}</div>
+					<div class="value"> hobbies: {{object.0.hobbies}}</div>
+					<div class="value"> what bothers me: {{object.0.disorder}}</div>
 				</div>
 			</div>
-			<div class="row_l2_2">
-				<div id ="c1_ic1" class="icon1"><img src="statics/img/noise.png"/></div>
-				<div id ="c1_ic2" class="icon1"><img src="statics/img/crowded.png"/></div>
-				<div id ="c1_ic3" class="icon1"><img src="statics/img/unknown.png"/></div>
-				<div id ="c1_ic4" class="icon1"><img src="statics/img/light.png"/></div>
+			<div class="row">
+				<div id="c1_ic1" class="icon1 col-sm"><img src="/statics/img/noise.png" style="background-color:red"/></div>
+				<div id ="c1_ic2" class="icon1 col-sm"><img src="/statics/img/crowded.png"/></div>
+				<div id ="c1_ic3" class="icon1 col-sm"><img src="/statics/img/unknown.png"/></div>
+				<div id ="c1_ic4" class="icon1 col-sm"><img src="/statics/img/light.png"/></div>
+			</div>
+
+		</div>
+
+		<div class="col-sm" id="col-sm1">
+			<div class="row">
+				<div class="pic col-sm">
+					<img id="pic1" src=/statics/img/{{object.1.picture}}>
+				</div>
+				<div class="details col-sm">
+					<div class="value">  name: {{object.1.full_name}}</div>
+		 			<div class="value">  age: {{object.1.age}}</div>
+					<div class="value"> hobbies: {{object.1.hobbies}}</div>
+					<div class="value"> what bothers me: {{object.1.disorder}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="c1_ic1" class="icon1 col-sm"><img src="/statics/img/noise.png"/></div>
+				<div id ="c1_ic2" class="icon1 col-sm"><img src="/statics/img/crowded.png"/></div>
+				<div id ="c1_ic3" class="icon1 col-sm"><img src="/statics/img/unknown.png"/></div>
+				<div id ="c1_ic4" class="icon1 col-sm"><img src="/statics/img/light.png" style="background-color:red"/></div>
+			</div>
+
+		</div>
+
+		<div class="col-sm" id="col-sm1">
+			<div class="row">
+				<div class="pic col-sm">
+					<img id="pic1" src=/statics/img/{{object.2.picture}}>
+				</div>
+				<div class="details col-sm">
+					<div class="value">  name: {{object.2.full_name}}</div>
+		 			<div class="value">  age: {{object.2.age}}</div>
+					<div class="value"> hobbies: {{object.2.hobbies}}</div>
+					<div class="value"> what bothers me: {{object.2.disorder}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="c1_ic1" class="icon1 col-sm"><img src="/statics/img/noise.png"/></div>
+				<div id ="c1_ic2" class="icon1 col-sm"><img src="/statics/img/crowded.png" style="background-color:red"/></div>
+				<div id ="c1_ic3" class="icon1 col-sm"><img src="/statics/img/unknown.png"/></div>
+				<div id ="c1_ic4" class="icon1 col-sm"><img src="/statics/img/light.png"/></div>
 			</div>
 
 		</div>
 
 
-
-		<div class="child" id="child2">
-			<div class="row_l2_1">
-				<div class="pic">
-					<img id="pic2" src=statics/img/{{object.1.pictur}}/>
-				</div>
-				<div class="details">
-					<div class="value"><p> name:{{object.1.name}}</p></div>
-					<div class="value"><p> age: {{object.1.age}}</p></div>
-					<div class="value"><p> hobbies:{{object.1.hobbies}}</p></div>
-					<div class="value"><p> solution:{{object.1.solution}}</p></div>
-					<div class="value"><p> risk_level:{{object.1.risk_level}}</p></div>
-
-				</div>
-			</div>
-			<div class="row_l2_2">
-				<div id ="c2_ic1" class="icon1"><img src="statics/img/noise.png"/></div>
-				<div id ="c2_ic2" class="icon1"><img src="statics/img/crowded.png"/></div>
-				<div id ="c2_ic3" class="icon1"><img src="statics/img/unknown.png"/></div>
-				<div id ="c2_ic4" class="icon1"><img src="statics/img/light.png"/></div>
-			</div>
-		</div>
-		<div class="child" id="child3">
-			<div class="row_l2_1">
-				<div class="pic">
-					<img id="pic3" src=statics/img/{{object.3.pictur}}/>
-				</div>
-				<div class="details">
-					<div class="value"><p> name: {{object.3.name}}</p></div>
-					<div class="value"><p> age: {{object.3.age}}</p></div>
-					<div class="value"><p> hobbies: {{object.3.hobbies}}</p></div>
-					<div class="value"><p> solution: {{object.3.solution}}</p></div>
-					<div class="value"><p> risk_level: {{object.3.risk_level}}</p></div>
-
-				</div>
-			</div>
-			<div class="row_l2_2">
-				<div id ="c3_ic1" class="icon1"><img src="statics/img/noise.png"/></div>
-				<div id ="c3_ic2" class="icon1"><img src="statics/img/crowded.png"/></div>
-				<div id ="c3_ic3" class="icon1"><img src="statics/img/unknown.png"/></div>
-				<div id ="c3_ic4" class="icon1"><img src="statics/img/light.png"/></div>
-			</div>
-		</div>
 	</div>
-	<div class="row" id="row2">
-		<div class="child" id="child4">
-			<div class="row_l2_1">
-				<div class="pic">
-					<img id="pic4" src=statics/img/{{object.4.pictur}}/>
+	<div class="row" id="row1">
+		<div class="col-sm" id="col-sm1">
+			<div class="row">
+				<div class="pic col-sm">
+					<img id="pic1" src=/statics/img/{{object.3.picture}}>
 				</div>
-				<div class="details">
-					<div class="value"><p> name: {{object.4.name}}</p></div>
-					<div class="value"><p> age: {{object.4.age}}</p></div>
-					<div class="value"><p> hobbies: {{object.4.hobbies}}</p></div>
-					<div class="value"><p> solution: {{object.4.solution}}</p></div>
-					<div class="value"><p> risk_level: {{object.4.risk_level}}</p></div>
+				<div class="details col-sm">
+					<div class="value">  name: {{object.3.full_name}}</div>
+		 			<div class="value">  age: {{object.3.age}}</div>
+					<div class="value"> hobbies: {{object.3.hobbies}}</div>
+					<div class="value"> what bothers me: {{object.3.disorder}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="c1_ic1" class="icon1 col-sm"><img src="/statics/img/noise.png"/></div>
+				<div id ="c1_ic2" class="icon1 col-sm"><img src="/statics/img/crowded.png" style="background-color:red"/></div>
+				<div id ="c1_ic3" class="icon1 col-sm"><img src="/statics/img/unknown.png"/></div>
+				<div id ="c1_ic4" class="icon1 col-sm"><img src="/statics/img/light.png"/></div>
+			</div>
 
-				</div>
-			</div>
-			<div class="row_l2_2">
-				<div id ="c4_ic1" class="icon1"><img src="statics/img/noise.png"/></div>
-				<div id ="c4_ic2" class="icon1"><img src="statics/img/crowded.png"/></div>
-				<div id ="c4_ic3" class="icon1"><img src="statics/img/unknown.png"/></div>
-				<div id ="c4_ic4" class="icon1"><img src="statics/img/light.png"/></div>
-			</div>
 		</div>
-		<div class="child" id="child5">
-			<div class="row_l2_1">
-				<div class="pic">
-					<img id="pic5" src=statics/img/{{object.5.pictur}}/>
-				</div>
-				<div class="details">
-					<div class="value"><p> name: {{object.5.name}}</p></div>
-					<div class="value"><p> age: {{object.5.age}}</p></div>
-					<div class="value"><p> hobbies: {{object.5.hobbies}}</p></div>
-					<div class="value"><p> solution: {{object.5.solution}}</p></div>
-					<div class="value"><p> risk_level: {{object.5.risk_level}}</p></div>
 
+		<div class="col-sm" id="col-sm1">
+			<div class="row">
+				<div class="pic col-sm">
+					<img id="pic1" src=/statics/img/{{object.4.picture}}>
+				</div>
+				<div class="details col-sm">
+					<div class="value">  name: {{object.4.full_name}}</div>
+		 			<div class="value">  age: {{object.4.age}}</div>
+					<div class="value"> hobbies: {{object.4.hobbies}}</div>
+					<div class="value"> what bothers me: {{object.4.disorder}}</div>
 				</div>
 			</div>
-			<div class="row_l2_2">
-				<div id ="c5_ic1" class="icon1"><img src="statics/img/noise.png"/></div>
-				<div id ="c5_ic2" class="icon1"><img src="statics/img/crowded.png"/></div>
-				<div id ="c5_ic3" class="icon1"><img src="statics/img/unknown.png"/></div>
-				<div id ="c5_ic4" class="icon1"><img src="statics/img/light.png"/></div>
+			<div class="row">
+				<div id="c1_ic1" class="icon1 col-sm"><img src="/statics/img/noise.png"/></div>
+				<div id ="c1_ic2" class="icon1 col-sm"><img src="/statics/img/crowded.png"/></div>
+				<div id ="c1_ic3" class="icon1 col-sm"><img src="/statics/img/unknown.png"/></div>
+				<div id ="c1_ic4" class="icon1 col-sm"><img src="/statics/img/light.png" style="background-color:red"/></div>
 			</div>
-		</div>
-		<div class="child" id="child6">
-			<div class="row_l2_1">
-				<div class="pic">
-					<img id="pic6" src=statics/img/{{object.6.pictur}}/>
-				</div>
-				<div class="details">
-					<div class="value"><p> name: {{object.6.name}}</p></div>
-					<div class="value"><p> age: {{object.6.age}}</p></div>
-					<div class="value"><p> hobbies: {{object.6.hobbies}}</p></div>
-					<div class="value"><p> solution: {{object.6.solution}}</p></div>
-					<div class="value"><p> risk_level: {{object.6.risk_level}}</p></div>
 
+		</div>
+
+			<div class="col-sm" id="col-sm1">
+			<div class="row">
+				<div class="pic col-sm">
+					<img id="pic1" src=/statics/img/{{object.5.picture}}>
+				</div>
+				<div class="details col-sm">
+					<div class="value">  name: {{object.5.full_name}}</div>
+		 			<div class="value">  age: {{object.5.age}}</div>
+					<div class="value"> hobbies: {{object.5.hobbies}}</div>
+					<div class="value"> what bothers me: {{object.5.disorder}}</div>
 				</div>
 			</div>
-			<div class="row_l2_2">
-				<div id ="c6_ic1" class="icon1"><img src="statics/img/noise.png"/></div>
-				<div id ="c6_ic2" class="icon1"><img src="statics/img/crowded.png"/></div>
-				<div id ="c6_ic3" class="icon1"><img src="statics/img/unknown.png"/></div>
-				<div id ="c6_ic4" class="icon1"><img src="statics/img/light.png"/></div>
+			<div class="row">
+				<div id="c1_ic1" class="icon1 col-sm"><img src="/statics/img/noise.png" style="background-color:red"/></div>
+				<div id ="c1_ic2" class="icon1 col-sm"><img src="/statics/img/crowded.png"/></div>
+				<div id ="c1_ic3" class="icon1 col-sm"><img src="/statics/img/unknown.png"/></div>
+				<div id ="c1_ic4" class="icon1 col-sm"><img src="/statics/img/light.png"/></div>
 			</div>
+
 		</div>
+
+		</div>
+
+
 	</div>
 {% endblock %}

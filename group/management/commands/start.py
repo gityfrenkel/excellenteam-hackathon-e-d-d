@@ -15,7 +15,7 @@ import requests
 import random
 
 from group.management import commands
-from load_sound_detection import a
+from loud_sound_detection import a
 
 
 def all_children():
@@ -24,20 +24,18 @@ def all_children():
 
 
 def children_by_light():
-    qs = Child.objects.filter(disorder='light')
+    qs = Child.objects.filter(disorder='Strong light')
+    print(qs)
     return qs
 
 
 def children_by_crowed():
-    qs = Child.objects.filter(disorder='crowed')
-    print(qs)
-
+    qs = Child.objects.filter(disorder='Crowded space')
     return qs
 
 
 def children_by_noise():
-    qs = Child.objects.filter(disorder='noise')
-    print(qs)
+    qs = Child.objects.filter(disorder='Loud noise')
     return qs
 
 
@@ -48,16 +46,14 @@ def children_by_unknown():
 
 def html_all_children(qs):
     html = render_to_string('result.html', {'object': qs})
-    print(html)
     return html
 
 def html_main(qs):
     html = render_to_string('background.html', {'object': qs})
-    print(html)
     return html
 
 def publish(content):
-    r = requests.post('http://localhost:8888/publish/', {
+    r = requests.post('http://localhost:8282/publish/', {
         'content': content,
     })
     r.raise_for_status()
@@ -91,15 +87,15 @@ class Command(BaseCommand):
             num_after = lightDetection(frame)
             count += 1
             # v.append(a())
-            v = a()
+            # v = a()
 
 
             try:
-                if len(faces) > 3:
+                if len(faces) > 1:
                     qs = children_by_crowed()
                     html = html_all_children(qs)
                     code = publish(html)
-                    print(">", code)
+                    # print(">", code)
                     sound()
                     sleep(10)
                     qss = all_children()
@@ -111,7 +107,7 @@ class Command(BaseCommand):
                     qs = children_by_light()
                     html = html_all_children(qs)
                     code = publish(html)
-                    print("STRONG LIGHT DETECTED!!!!", code)
+                    # print("STRONG LIGHT DETECTED!!!!", code)
                     sound()
                     sleep(10)
                     qss = all_children()
@@ -135,15 +131,15 @@ class Command(BaseCommand):
                 #         qss = all_children()
                 #         htmlmain = html_main(qss)
                 #         publish(htmlmain)
-                if (v > 10):
-                    qs = children_by_noise()
-                    html = html_all_children(qs)
-                    code = publish(html)
-                    print("loud sound detected", code)
-                    sleep(60)
-                    qss = all_children()
-                    htmlmain = html_main(qss)
-                    publish(htmlmain)
+                # if (v > 10):
+                #     qs = children_by_noise()
+                #     html = html_all_children(qs)
+                #     code = publish(html)
+                #     print("loud sound detected", code)
+                #     sleep(60)
+                #     qss = all_children()
+                #     htmlmain = html_main(qss)
+                #     publish(htmlmain)
 
             except ConnectionError as e:
                 print("!", e)

@@ -30,7 +30,7 @@ async def sign_handler(request):
     try:
         logger.info(f'[+{my_id}] Connected.')
         request.app['sockets'].append(resp)
-        await resp.send_str("Hi!")
+        # await resp.send_str("Hi!")
         async for msg in resp:
             if msg.type == aiohttp.WSMsgType.ERROR:
                 logger.warning(f'[!{my_id}] Exception: {resp.exception()}')
@@ -84,5 +84,5 @@ if __name__ == "__main__":
         format='%(asctime)s %(levelname)s %(message)s',
     )
 
-    web.run_app(init(), port=8888)
+    web.run_app(init(), port=8282)
 

@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="background">
+
     {% for o in object %}
-        <div class="background">
-            <div class="wrapper">
-                <img class="pic" src='statics/img/{{o.picture}}'/>
-                <p>{{o.name}} doesn't like {{o.disorder}} {{o.solution}} can calm them down.</p>
-                <img class="icon" src='statics/img/{{o.icon}}'/>
+        <div>
+            <div class="wrapper" style="padding: 10px 20px">
+                <img style="float:right; width: 250px;" class="pic" src='/statics/img/{{o.picture}}'/>
+                <div style="display: inline-block; padding-top: 20px;">
+                <p> {{o.name}} has a hard time with {{o.disorder}}.</p>
+                <p> In order to cope with this {{o.name}} can:</p>
+                <p>{{o.solution}}</p>
+                </div>
+                <img style="float:left" class="icon" src='/statics/img/{{o.icon}}'/>
+                <div style="clear: both"></div>
             </div>
         </div>
     {% endfor %}
-
+</div>
 {% endblock %}
