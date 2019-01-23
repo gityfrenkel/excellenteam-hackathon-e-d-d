@@ -68,7 +68,7 @@ class Command(BaseCommand):
     help = "start camera"
 
     def handle(self, *args, **options):
-        v = []
+        # v = []
         qss = all_children()
         htmlmain = html_main(qss)
         publish(htmlmain)
@@ -90,7 +90,8 @@ class Command(BaseCommand):
             num_before = num_after
             num_after = lightDetection(frame)
             count += 1
-            v.append(a())
+            # v.append(a())
+            v = a()
 
 
             try:
@@ -118,23 +119,31 @@ class Command(BaseCommand):
                     publish(htmlmain)
 
 
-                b = 0
-                if count > 50:
-                    x = count-50
-                    for i in range(x, count):
-
-                        if v[i] < 100:
-                            b += 1
-                    if b > 30:
-                        qs = children_by_noise()
-                        html = html_all_children(qs)
-                        code = publish(html)
-                        print("loud sound detected", code)
-                        sleep(60)
-                        qss = all_children()
-                        htmlmain = html_main(qss)
-                        publish(htmlmain)
-
+                # b = 0
+                # if count > 50:
+                #     x = count-50
+                #     for i in range(x, count):
+                #
+                #         if v[i] < 100:
+                #             b += 1
+                #     if b > 30:
+                #         qs = children_by_noise()
+                #         html = html_all_children(qs)
+                #         code = publish(html)
+                #         print("loud sound detected", code)
+                #         sleep(60)
+                #         qss = all_children()
+                #         htmlmain = html_main(qss)
+                #         publish(htmlmain)
+                if (v > 10):
+                    qs = children_by_noise()
+                    html = html_all_children(qs)
+                    code = publish(html)
+                    print("loud sound detected", code)
+                    sleep(60)
+                    qss = all_children()
+                    htmlmain = html_main(qss)
+                    publish(htmlmain)
 
             except ConnectionError as e:
                 print("!", e)

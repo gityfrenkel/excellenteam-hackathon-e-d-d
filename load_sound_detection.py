@@ -11,6 +11,6 @@ def print_sound(indata, outdata, frames, time, status):
 
 def a():
     with sd.Stream(callback=print_sound):
-        sd.sleep(duration * 5)
+        sd.sleep(duration)
     return volume
 
