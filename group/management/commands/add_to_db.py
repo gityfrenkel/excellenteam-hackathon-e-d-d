@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     def handle(self, n, *args, **options):
         Child.objects.all().delete()
-        pictures = ["boy_picture.jpg", "child.jpg"]
+        pictures = ["david.jpg", "noam.jpg"]
         disorders_list = [['crowed', 'too many people in the room','play with soft things, tell someone to leave room','crowded.png'],
                           ['noise', 'strong noise','deep contact, put hands over ears, go out to a quit room','noise.png'],
                           ['light', 'strong light','go out to natural light, turn off bothering light','light.png'],
