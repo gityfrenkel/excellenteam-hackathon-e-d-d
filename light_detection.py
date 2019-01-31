@@ -21,7 +21,7 @@ def lightDetection(frame):
         labelMask = np.zeros(thresh.shape, dtype="uint8")
         labelMask[labels == label] = 255
         numPixels = cv2.countNonZero(labelMask)
-        if numPixels > 300:
+        if numPixels > 400:
             mask = cv2.add(mask, labelMask)
     cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
                             cv2.CHAIN_APPROX_SIMPLE)

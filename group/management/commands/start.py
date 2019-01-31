@@ -69,6 +69,8 @@ class Command(BaseCommand):
         htmlmain = html_main(qss)
         publish(htmlmain)
 
+        # cv2.namedWindow('image', WINDOW_NORMAL)
+
         cap = cv2.VideoCapture(0)
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
         count = 0
@@ -91,7 +93,10 @@ class Command(BaseCommand):
 
 
             try:
-                if len(faces) > 1:
+                if len(faces) > 2:
+                    cv2.resizeWindow('frame', 400, 400)
+                    cv2.imshow('frame', frame)
+
                     qs = children_by_crowed()
                     html = html_all_children(qs)
                     code = publish(html)
@@ -100,10 +105,14 @@ class Command(BaseCommand):
                     sleep(10)
                     qss = all_children()
                     htmlmain = html_main(qss)
+
                     publish(htmlmain)
 
 
                 if num_after > num_before and count > 5:
+                    # cv2.resizeWindow('frame', 400, 400)
+                    # cv2.imshow('frame', frame)
+                    # sleep(3)
                     qs = children_by_light()
                     html = html_all_children(qs)
                     code = publish(html)
@@ -112,6 +121,7 @@ class Command(BaseCommand):
                     sleep(10)
                     qss = all_children()
                     htmlmain = html_main(qss)
+
                     publish(htmlmain)
 
 
@@ -147,8 +157,9 @@ class Command(BaseCommand):
 
             for (x, y, w, h) in faces:
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
+            cv2.resizeWindow('frame', 400, 400)
             cv2.imshow('frame', frame)
+
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
