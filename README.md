@@ -1,36 +1,27 @@
-# {Environmental Disorder Detection}
-{ONE LINE PROJECT DESCRIPTION HERE}
+# Environmental Disorder Detection
+An advanced system that detects environmental changes that cause mental breake downs for A.S.D children, and shows to the screen clear and practical solutions.   
 
-* {Orly Kierszenbaum}
-* {Gitty Frenkel}
-* {Yirat Ginsberg}
-
-{OPTIONAL: MORE PROJECT INFO}
+* Orly Kierszenbaum
+* Gitty Frenkel
+* Yirat Ginsberg
 
 ## Screenshots
 
 ![SCREESHOT DECSRIPTION](screenshots/excellenteam-logo.jpeg)
 
-## How to Run This Bot
-
 ### Prerequisites
-* {EDIT AND ADD MORE DEPENDENCIES HERE}
-* Python 3.7 ???
-* pipenv ???
+* Python 3.7 
+* pipenv 
 
 ### Setup
-* {EDIT THIS}
 * Clone this repo from github
 * Install dependencies: `pipenv install`
 
 ### Run
-{EDIT THIS}
 To run this project use:
-
-    pipenv run python main.py
-
-(Or just `python main.py` if running in a pipenv shell.)
+ * `pipenv run python websocket_pubsub.py`
+ * `python manage.py add_to_db`
+ * `python manage.py start_camera`
 
 ## Credits and References
-* {ADD REFERENCES HERE}
-
+* NonZero - Udi Oron for helping with the socket code
