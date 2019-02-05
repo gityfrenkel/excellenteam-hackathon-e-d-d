@@ -7,7 +7,7 @@ An advanced system that detects environmental changes that cause mental breake d
 
 ## Screenshots
 
-![SCREESHOT DECSRIPTION](screenshots/excellenteam-logo.jpeg)
+![SCREESHOT DECSRIPTION](screenshots/mainscreen.png)
 
 ### Prerequisites
 * Python 3.7 
