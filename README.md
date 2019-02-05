@@ -21,7 +21,7 @@ An advanced system that detects environmental changes that cause mental breake d
 To run this project use:
  * `pipenv run python websocket_pubsub.py`
  * `python manage.py add_to_db`
- * `python manage.py start_camera`
+ * `python manage.py start`
 
 ## Credits and References
 * NonZero - Udi Oron for helping with the socket code
