@@ -8,6 +8,7 @@ An advanced system that detects environmental changes that cause mental breake d
 ## Screenshots
 
 ![SCREESHOT DECSRIPTION](screenshots/mainscreen.png)
+![SCREESHOT DECSRIPTION](screenshots/disorderscreen.png)
 
 ### Prerequisites
 * Python 3.7 
